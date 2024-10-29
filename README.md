@@ -18,7 +18,7 @@
    - Clone the repository by running the following commands:
      ```bash
      git clone https://github.com/busi732/busi732/BUSI732_F24_Team3.git
-     cd busi732/BUSI732_F24_Team3
+     cd BUSI732_F24_Team3
      ```
 
 ### Setting Up the Environment
