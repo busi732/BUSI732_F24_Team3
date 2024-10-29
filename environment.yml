@@ -1,6 +1,7 @@
 name: fu24_block2_team3_env
 channels:
   - defaults
+  - conda-forge
 dependencies:
   - bzip2=1.0.8
   - ca-certificates=2024.9.24
@@ -28,4 +29,3 @@ dependencies:
       - six==1.16.0
       - tzdata==2024.2
       - urllib3==2.2.3
-prefix: C:\Users\sirui\.conda\envs\fu24_block2_team3_env
