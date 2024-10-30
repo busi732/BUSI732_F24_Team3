@@ -17,4 +17,4 @@ dependencies:
   - ipykernel             # Allows the Conda environment to appear as a Jupyter kernel
   - notebook              # Jupyter Notebook interface
   - numpy                 # Numerical computations
-  - matplotlib            # Basic plotting (optional)
+  - matplotlib            
