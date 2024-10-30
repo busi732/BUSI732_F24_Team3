@@ -11,3 +11,10 @@ dependencies:
   - numpy
   - pandas
   - python=3.11
+  - python=3.11            # Preferred Python version
+  - jupyter               # Jupyter Notebook
+  - pandas                # Data analysis library
+  - ipykernel             # Allows the Conda environment to appear as a Jupyter kernel
+  - notebook              # Jupyter Notebook interface
+  - numpy                 # Numerical computations
+  - matplotlib            # Basic plotting (optional)
