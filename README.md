@@ -17,7 +17,7 @@
    - Open Visual Studio Code, then open the terminal by going to **View > Terminal** or pressing `Ctrl + ` ` (backtick).
    - Clone the repository by running the following commands:
      ```bash
-     git clone https://github.com/busi732/busi732/BUSI732_F24_Team3.git
+     git clone https://github.com/busi732/BUSI732_F24_Team3.git
      cd BUSI732_F24_Team3
      ```
 
