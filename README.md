@@ -112,10 +112,14 @@ busi732/BUSI732_F24_Team3/
 ├── data/                   # Data files
 │   ├── raw/                # Raw data files
 │   ├── processed/          # Processed data
-│   └── external/           # External data sources
+│   ├── external/           # External data sources
+|   └── final/              # Data after training model
 ├── notebooks/              # Jupyter notebooks
-│   ├── mytests/            # Test notebooks
-│   └── check_conda.ipynb   # A notebook for testing Conda setup
+│   └── mytests/            # Test notebooks
+│       └── check_conda.ipynb   # A notebook for testing Conda setup
+├── docs/                   # Documents
+│   ├── references/         # References documents used
+|   └── home.md             # Project wiki
 ├── src/                    # Source code scripts
 ├── models/                 # Serialized models and model checkpoints
 ├── reports/                # Generated analysis and reports
