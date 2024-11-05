@@ -10,3 +10,4 @@ dependencies:
   - notebook              # Jupyter Notebook interface
   - numpy                 # Numerical computations
   - matplotlib            # Basic plotting (optional)
+
