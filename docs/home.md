@@ -30,6 +30,7 @@ This project focuses on optimizing operations for EnergyCo. Our primary objectiv
 - Tian Le
 - Sirui Hao
 - Raj Patel
+- Lia Cueto
 
 ### ADR Summary
 
