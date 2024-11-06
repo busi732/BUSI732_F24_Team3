@@ -1,13 +1,16 @@
 name: fu24_block2_team3_env
 channels:
-  - conda-forge
   - defaults
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
 dependencies:
-  - python=3.11            # Preferred Python version
-  - jupyter               # Jupyter Notebook
-  - pandas                # Data analysis library
-  - ipykernel             # Allows the Conda environment to appear as a Jupyter kernel
-  - notebook              # Jupyter Notebook interface
-  - numpy                 # Numerical computations
-  - matplotlib            # Basic plotting (optional)
-
+  - ipykernel
+  - jupyter
+  - matplotlib
+  - notebook
+  - numpy
+  - pandas
+  - python=3.11
+  - dataprep
+  - pyarrow-hotfix
+prefix: /opt/homebrew/anaconda3/envs/fu24_block2_team3_env
