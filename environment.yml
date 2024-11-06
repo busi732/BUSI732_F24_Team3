@@ -1,8 +1,7 @@
 name: fu24_block2_team3_env
 channels:
   - defaults
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
+  - conda-forge
 dependencies:
   - ipykernel
   - jupyter
@@ -10,7 +9,6 @@ dependencies:
   - notebook
   - numpy
   - pandas
-  - python=3.11
+  - python=3.8
   - dataprep
   - pyarrow-hotfix
-prefix: /opt/homebrew/anaconda3/envs/fu24_block2_team3_env
