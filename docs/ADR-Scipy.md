@@ -1,4 +1,8 @@
-# ADR-003: Selection of Scipy for Optimization Task
+# ADR: Selection of Scipy for Optimization Task
+
+**Date:** 11-11-2024
+
+**Status:** Proposed
 
 ## Context
 The task at hand is to optimize the maintenance schedule and energy production for a wind turbine located in Texas within the ERCOT region. The optimization problem involves minimizing maintenance costs (both internal and external), managing failure rates, and maximizing energy production and revenue, while adhering to constraints like pre-sold energy and seasonal demand. This requires an optimization library that can efficiently handle the problem's non-linear and constrained nature.
@@ -9,10 +13,8 @@ Three potential libraries have been considered for solving the optimization prob
 - PuLP
 - Pyomo
 
-Each of these libraries has unique strengths, and the decision comes down to their suitability for the given problem in terms of flexibility, ease of use, performance, and support for complex constraints.
-
 ## Decision
-After careful consideration, Scipy has been selected as the optimization library for this project. The reasons for this decision are as follows:
+Scipy has been selected as the optimization library for this project. The reasons for this decision are as follows:
 
 - Problem Fit: While the problem involves some integer decision variables (such as the number of maintenance trips and whether to perform preventative maintenance), the majority of the optimization is focused on continuous variables (such as energy production and maintenance costs). Scipy provides excellent support for these types of problems and can efficiently handle non-linear constraints.
 - Simplicity: Scipy’s API is clean and integrates well into the existing codebase without the need for complex solver configurations or external dependencies. For this project, we value ease of use and the ability to quickly test and refine the optimization model.
