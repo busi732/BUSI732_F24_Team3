@@ -19,7 +19,7 @@ Scipy has been selected as the optimization library for this project. The reason
 - Problem Fit: While the problem involves some integer decision variables (such as the number of maintenance trips and whether to perform preventative maintenance), the majority of the optimization is focused on continuous variables (such as energy production and maintenance costs). Scipy provides excellent support for these types of problems and can efficiently handle non-linear constraints.
 - Simplicity: Scipy’s API is clean and integrates well into the existing codebase without the need for complex solver configurations or external dependencies. For this project, we value ease of use and the ability to quickly test and refine the optimization model.
 - Performance: For the scale of the problem (a single turbine and a single year of data), Scipy’s solvers are expected to perform well. If performance issues arise, we can consider moving to a more robust solution like Pyomo.
--  Simplicity and Community Support: Scipy is widely used within the scientific and engineering communities, and it has extensive documentation and tutorials. This makes it an ideal choice for teams with new members or those not deeply familiar with optimization. Its integration with the broader Python ecosystem also means that developers can easily collaborate and troubleshoot issues.
+- Community Support: Scipy is widely used within the scientific and engineering communities, and it has extensive documentation and tutorials. This makes it an ideal choice for teams with new members or those not familiar with optimization. Its integration with the broader Python ecosystem also means that developers can easily collaborate and troubleshoot issues.
 
 ## Alternatives Considered
 1. PuLP
