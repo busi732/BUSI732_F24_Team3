@@ -23,6 +23,7 @@ Scipy has been selected as the optimization library for this project. The reason
 
 ## Alternatives Considered
 1. PuLP
+
 Strengths:
 - PuLP provides a user-friendly, high-level interface for linear programming and mixed-integer programming. It is built around linear and integer optimization problems.
 - PuLP integrates well with open-source solvers. This flexibility in solver choice allows us to scale based on problem complexity.
@@ -32,6 +33,7 @@ Weaknesses:
 - PuLP is primarily focused on linear and mixed-integer linear programming problems. It doesn't have robust support for non-linear optimization problems, which may be a limitation for non-linear relationships or constraints (e.g., non-linear failure costs or maintenance schedules).
 
 2. Pyomo
+
 Strengths:
 - Pyomo is highly flexible and used across various domains for optimization, making it a highly robust and scalable choice for industrial-level problems.
 - Pyomo is well-suited for both linear and mixed-integer programming problems.
@@ -48,6 +50,7 @@ Weaknesses:
 ## Implementation
 
 ### Minimizing Hired Personnel Cost:
+
 **Objective:** Contribute to minimizing maintenance cost by deciding between internal and external maintenance.
 
 Use Scipy's `minimize` function to find the optimal allocation between internal and external maintenance, while considering constraints like available resources, maintenance schedules, and seasonal demand.
@@ -56,6 +59,7 @@ Use Scipy's `minimize` function to find the optimal allocation between internal 
 - Outputs: The optimal decision between internal and external maintenance to minimize costs.
 
 ### Minimizing Outage-Based Maintenance Cost:
+
 **Objective:** Minimize overall maintenance costs by deciding between corrective and preventative maintenance. 
 
 - Inputs: EMaintenance failure rates, downtime costs, and preventative maintenance success rate. 
