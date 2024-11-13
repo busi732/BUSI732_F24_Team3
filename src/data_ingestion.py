@@ -1,6 +1,6 @@
 import pandas as pd
 
-def data_ingestion(fileName: str, colName: str):
+def data_ingestion(fileName: str, colName: str, format: str):
   
   """
     Loads a CSV file and converts a specified column to datetime format.
@@ -28,6 +28,7 @@ def data_ingestion(fileName: str, colName: str):
   # reading the csv file
   df = pd.read_csv(DATA_PATH+fileName)
   
-  df[colName] = pd.to_datetime(df[colName])
-  
+  # scada/fault one goes to minutes one goes to seconds, ignore all seconds to keep all minutes
+  df[colName] = pd.to_datetime(df[colName], format=format).dt.floor('min')
   return df
+
