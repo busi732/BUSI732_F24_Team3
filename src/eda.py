@@ -1,4 +1,4 @@
-from read_data import process_raw_data
+from src.data_ingestion import process_raw_data
 from dataprep.eda import create_report
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
