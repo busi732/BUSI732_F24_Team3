@@ -62,6 +62,10 @@ Analyze error patterns and other historical data to predict when specific compon
 * Purpose: Large-scale optimization, especially for energy systems.
 * Usage: Handles complex, multi-variable optimization problems such as operational efficiency and cost minimization in energy systems.
 * Example Functionality: Suitable for nonlinear, mixed-integer, and stochastic programming.
+4. scikit-learn
+* purpose: General machine learning toolkit.
+* Usage: Apply machine learning models to predict component failures (predictive maintenance), optimize power output, or forecast turbine performance.
+* Example Functionality: Use algorithms like regression, decision trees, or clustering for predictive maintenance and failure detection based on historical data (e.g., temperature, speed
 
 
 ## Constraints
