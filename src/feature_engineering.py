@@ -1,4 +1,85 @@
 import numpy as np
+import pandas as pd
+
+def preprocess_price_data(price_data):
+    """
+    Process price data to generate DateTime and filter for 'HB_HOUSTON' settlement point.
+
+    - Combines 'Delivery Date' and 'Hour Ending' to create a unified DateTime.
+    - Adjusts 'Hour Ending' to end at the 59th minute for consistency.
+    - Filters data for the 'HB_HOUSTON' settlement point.
+
+    Parameters:
+    ----------
+    price_data : pandas.DataFrame
+        DataFrame containing the raw price data with 'Delivery Date', 'Hour Ending', and 'Settlement Point'.
+
+    Returns:
+    -------
+    pandas.DataFrame
+        Processed DataFrame with 'DateTime' and filtered rows for 'HB_HOUSTON'.
+    """
+    price_data['Hour Ending'] = price_data['Hour Ending'].str.replace(':00', ':59', regex=False)
+    price_data['DateTime'] = pd.to_datetime(
+        price_data['Delivery Date'] + ' ' + price_data['Hour Ending'],
+        format='%m/%d/%Y %H:%M',
+        errors='coerce'
+    )
+    return price_data[price_data['Settlement Point'] == 'HB_HOUSTON']
+
+def preprocess_scada_data(scada_data, overlap_start, overlap_end):
+    """
+    Align SCADA DateTime to nearest hour ending with ':59' and filter within overlapping range.
+
+    - Adjusts the DateTime to match the granularity of the price data.
+    - Filters SCADA data to include only records within the overlapping period.
+
+    Parameters:
+    ----------
+    scada_data : pandas.DataFrame
+        DataFrame containing the raw SCADA data with 'DateTime'.
+    overlap_start : pandas.Timestamp
+        Start of the overlapping period for filtering.
+    overlap_end : pandas.Timestamp
+        End of the overlapping period for filtering.
+
+    Returns:
+    -------
+    pandas.DataFrame
+        Filtered and adjusted SCADA DataFrame within the specified range.
+    """
+    scada_data['DateTime'] = scada_data['DateTime'].dt.floor('H') + pd.Timedelta(minutes=59)
+    return scada_data[(scada_data['DateTime'] >= overlap_start) & (scada_data['DateTime'] <= overlap_end)]
+
+
+def calculate_revenue(scada_data, price_data):
+    """
+    Merge SCADA and price data, and calculate revenue based on production and price.
+
+    - Merges SCADA and price data on 'DateTime'.
+    - Calculates revenue using the formula: production (kWh) * price ($/MWh) / 1000.
+
+    Parameters:
+    ----------
+    scada_data : pandas.DataFrame
+        DataFrame containing 'DateTime' and 'WEC: Production kWh'.
+    price_data : pandas.DataFrame
+        DataFrame containing 'DateTime' and 'Settlement Point Price'.
+
+    Returns:
+    -------
+    pandas.DataFrame
+        DataFrame containing merged data and calculated revenue.
+    float
+        Total revenue generated.
+    """
+    merged_data = scada_data.merge(
+        price_data[['DateTime', 'Settlement Point Price']],
+        on="DateTime",
+        how="inner"
+    )
+    merged_data['Revenue'] = merged_data['WEC: Production kWh'] * merged_data['Settlement Point Price'] / 1000  # Convert kWh to MWh
+    return merged_data, merged_data['Revenue'].sum()
 
 def create_temporal_features(df):
     """

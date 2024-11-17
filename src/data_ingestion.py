@@ -1,34 +1,39 @@
 import pandas as pd
 
-def data_ingestion(fileName: str, colName: str, format: str):
-  
-  """
-    Loads a CSV file and converts a specified column to datetime format.
+def data_ingestion(file_path, sheet_names=None):
+    """
+    Load data from a single or multiple sheets in an Excel file.
+
+    - This function reads Excel sheets and combines them into a single DataFrame.
+    - If sheet names are not provided, all sheets in the file will be loaded.
+    - Designed for loading price data with multiple monthly sheets.
 
     Parameters:
     ----------
-    filename : str
-        The path to the CSV file to load. This file should contain a column
-        that needs conversion to datetime format.
-        
-    colname : str
-        The name of the column within the CSV file to be converted into
-        datetime format. The column should contain data that can be parsed
-        as dates.
+    file_path : str
+        The path to the Excel file containing the data.
+    sheet_names : list of str, optional
+        List of sheet names to load. If None, all sheets in the Excel file are loaded.
 
     Returns:
     -------
     pandas.DataFrame
-        A DataFrame with the specified column converted to datetime format.
+        A DataFrame containing all combined data from the specified sheets.
     """
-  
-  # Path to the raw data
-  DATA_PATH = "../data/raw/"
+    DATA_PATH = "../data/raw/"
+    file_path = DATA_PATH+file_path
 
-  # reading the csv file
-  df = pd.read_csv(DATA_PATH+fileName)
-  
-  # scada/fault one goes to minutes one goes to seconds, ignore all seconds to keep all minutes
-  df[colName] = pd.to_datetime(df[colName], format=format).dt.floor('min')
-  return df
+    if sheet_names is None:  # If no sheet names are provided, load all sheets
+        sheet_names = pd.ExcelFile(file_path).sheet_names
+
+    data_combined = pd.DataFrame()
+
+    for sheet in sheet_names:
+        try:
+            monthly_data = pd.read_excel(file_path, sheet_name=sheet)
+            data_combined = pd.concat([data_combined, monthly_data], ignore_index=True)
+        except Exception as e:
+            print(f"Error loading sheet {sheet}: {e}")
+
+    return data_combined
 
