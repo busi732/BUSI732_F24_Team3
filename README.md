@@ -1,7 +1,7 @@
-🚩# BUSI732 Fall2024 Team3
+# 🚩BUSI732 Fall2024 Team3
 
 
-📚## Table of Contents
+## 📚Table of Contents
 1. [Getting Started](#getting-started)
 2. [Setting Up the Environment](#setting-up-the-environment)
 3. [Selecting the Conda Environment in VS Code](#selecting-the-conda-environment-in-vs-code)
@@ -11,7 +11,7 @@
 
 ---
 
-💡### Getting Started
+### 💡Getting Started
 
 1. **Clone the Repository**:
    - Open Visual Studio Code, then open the terminal by going to **View > Terminal** or pressing `Ctrl + ` ` (backtick).
@@ -103,7 +103,7 @@ To contribute, you may need to add new packages or update existing ones in the e
 
 ---
 
-🗃️### Project Structure
+### 🗃️Project Structure
 
 This project follows a standard data science directory structure to keep code and data organized:
 

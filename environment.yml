@@ -13,3 +13,4 @@ dependencies:
   - dataprep
   - pyarrow-hotfix
   - openpyxl
+  - pulp
