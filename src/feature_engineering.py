@@ -105,7 +105,7 @@ def create_temporal_features(df):
     df['Month'] = df['DateTime'].dt.month
     df['Day_of_Week'] = df['DateTime'].dt.dayofweek
     df['Is_Weekend'] = df['Day_of_Week'].apply(lambda x: 1 if x >= 5 else 0)
-    df['Is_High_Demand_Season'] = df['Month'].apply(lambda x: 1 if x in [1, 10, 11, 12] else 0)
+    df['Is_High_Demand_Season'] = df['Month'].apply(lambda x: 1 if x in [1, 2, 6, 7, 8] else 0)
     return df
 
 def calculate_fault_frequency(df, fault_column):
