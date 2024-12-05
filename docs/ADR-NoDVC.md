@@ -1,7 +1,7 @@
 # ADR - Decision to Not Use DVC for Version Control
 
-**Date:** 11-17-2024  
-**Status:** Rejected  
+**Date:** 12-4-2024  
+**Status:** Proposed  
 
 ## Context
 
