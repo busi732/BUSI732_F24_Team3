@@ -21,7 +21,6 @@ jobs:
         with:
           miniconda-version: "latest"
           auto-update-conda: true
-          activate-environment: ""
 
       - name: Create Conda Environment
         run: |
@@ -31,13 +30,9 @@ jobs:
             echo "environment.yml not found, skipping environment creation."
           fi
 
-      - name: Activate Conda Environment
+      - name: Activate and Test Conda Environment
         run: |
-          source ~/.bashrc
+          source $(conda info --base)/etc/profile.d/conda.sh
           conda activate $(head -n 1 environment.yml | cut -d ':' -f 2 | xargs)
-          echo "Environment activated."
-
-      - name: Test Conda Environment Setup
-        run: |
           conda list
           python --version
