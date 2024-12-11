@@ -1,0 +1,43 @@
+name: Setup Conda Environment
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  setup-conda:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Miniconda
+        uses: goanpeca/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          auto-update-conda: true
+          activate-environment: ""
+
+      - name: Create Conda Environment
+        run: |
+          if [ -f "environment.yml" ]; then
+            conda env create -f environment.yml || conda env update -f environment.yml --prune
+          else
+            echo "environment.yml not found, skipping environment creation."
+          fi
+
+      - name: Activate Conda Environment
+        run: |
+          source ~/.bashrc
+          conda activate $(head -n 1 environment.yml | cut -d ':' -f 2 | xargs)
+          echo "Environment activated."
+
+      - name: Test Conda Environment Setup
+        run: |
+          conda list
+          python --version
