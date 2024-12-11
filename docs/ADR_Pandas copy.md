@@ -1,4 +1,4 @@
-## ADR: Adoption of Pandas in Wind Turbine Optimization
+# ADR: Choosing Cookiecutter vs Alternatives for Project Setup
 
 **date:** [12/11/2024]
 
@@ -6,83 +6,83 @@
 
 ## Context
 
-The team is tasked with developing a data processing pipeline for analyzing and transforming large datasets related to the **WindTurbin product**. The pipeline requires capabilities such as:
+The team is initiating development on a single project and needs to standardize the structure and setup. While tools like Cookiecutter are often used for templating multiple projects, we are evaluating its suitability for our single-project needs.
 
-- Efficient data manipulation (e.g., filtering, aggregations, joins).
-- Support for various file formats (e.g., CSV, Excel, Parquet).
-- Scalability to handle datasets ranging from a few megabytes to several gigabytes.
-- A user-friendly API to reduce the learning curve for new developers.
+Key requirements for this decision include:
 
-The primary decision is whether to use **Pandas**, a popular Python library for data manipulation, or explore alternative tools such as **Dask**, **PySpark**, or **SQL-based approaches**.
+- A clean and consistent project structure.
+- Ease of setup and maintainability.
+- Minimal overhead since we are working on only one project.
+- Flexibility to accommodate project-specific customizations.
+
+The decision revolves around whether to use **Cookiecutter**, a popular project templating tool, or alternative approaches like manual setup or bespoke scripts.
 
 ## Decision
 
-We have decided to use **Pandas** as the primary tool for our data processing needs.
+We have decided to use **Cookiecutter** for this single project to streamline the setup process.
 
 ## Alternatives Considered
 
-### 1. **Dask**
+### 1. **Cookiecutter**
 - **Pros:**
-  - Scales better for larger-than-memory datasets.
-  - Similar API to Pandas, easing the transition for experienced Pandas users.
-  - Supports parallel and distributed computation.
+  - Facilitates reusable and consistent project templates.
+  - Reduces human error in setting up the initial project structure.
+  - Supports custom templating logic for specific use cases.
 - **Cons:**
-  - Increased complexity in debugging and setup.
-  - Performance overhead for smaller datasets due to task scheduling.
+  - Adds some initial complexity in understanding and configuring templates.
 
-### 2. **PySpark**
+### 2. **Manual Setup**
 - **Pros:**
-  - Excellent for distributed computing across large clusters.
-  - Integrated with the Hadoop ecosystem and supports SQL-like queries.
+  - Direct and straightforward for a single project.
+  - No additional dependencies or learning curve.
+  - Full control over the structure, allowing for ad-hoc changes.
 - **Cons:**
-  - Steeper learning curve compared to Pandas.
-  - Overhead in serialization/deserialization for Python users.
-  - Requires additional infrastructure for cluster management.
+  - Higher likelihood of inconsistent structure if multiple developers are involved.
+  - Potentially slower initial setup compared to automated tools.
 
-### 3. **SQL-Based Approaches**
+### 3. **Custom Setup Script**
 - **Pros:**
-  - Well-suited for relational data.
-  - Can leverage existing database systems (e.g., PostgreSQL, Snowflake).
+  - Automates setup while remaining tailored to the project’s specific requirements.
+  - Flexible and lightweight compared to Cookiecutter.
 - **Cons:**
-  - Limited flexibility for non-tabular data structures.
-  - Requires a combination of SQL and another programming language for complex workflows.
+  - Requires time and effort to create the script.
+  - Limited value unless the script can be reused for other projects.
 
 ## Rationale
 
-### Why Pandas?
-1. **Ease of Use:**
-   - Pandas provides an intuitive and user-friendly API for data manipulation.
-   - A large amount of community documentation and tutorials exist, reducing the onboarding time for new team members.
+### Why Cookiecutter?
+1. **Consistency:**
+   - Cookiecutter ensures a standardized project structure, reducing ambiguity and setup errors.
 
-2. **Versatility:**
-   - Supports a wide variety of file formats and data sources out of the box.
-   - Extensive support for handling missing data and reshaping datasets.
+2. **Time Efficiency:**
+   - Automates the creation of boilerplate code and directory structures, saving time compared to manual setup.
 
-3. **Performance for Small-to-Medium Datasets:**
-   - For datasets that fit into memory, Pandas offers high performance with minimal setup.
+3. **Flexibility:**
+   - Allows customization of templates to fit the specific needs of the project.
 
-4. **Community and Ecosystem:**
-   - A large and active user base ensures continuous updates and the availability of third-party extensions.
-   - Seamless integration with popular Python libraries such as NumPy, Matplotlib, and Scikit-learn.
+4. **Future Readiness:**
+   - While we are working on a single project, using Cookiecutter now builds familiarity for potential future multi-project use cases.
 
 ### Why Not Alternatives?
-- **Dask and PySpark** introduce overhead and complexity that are unnecessary for our current dataset sizes.
-- **SQL-based approaches** lack the flexibility needed for advanced data transformations.
+1. **Manual Setup:**
+   - While straightforward, it risks inconsistency and may be slower for the initial setup.
+
+2. **Custom Setup Script:**
+   - The effort required to create a bespoke script is not justified for this single project.
 
 ## Consequences
 
 ### Positive:
-- Faster implementation due to familiarity with the Pandas API.
-- Efficient processing of datasets within the current memory limits.
-- Reduced learning curve for new developers joining the project.
+- Consistent and clean project structure from the outset.
+- Reduced likelihood of setup errors.
+- Faster onboarding for new developers due to a predictable structure.
 
 ### Negative:
-- Potential limitations if dataset sizes grow beyond available memory.
-- Single-threaded performance bottlenecks may arise in specific use cases.
-- Migration to a scalable tool like Dask or PySpark may be required in the future.
+- Initial learning curve for team members unfamiliar with Cookiecutter.
+- Slight upfront time investment in configuring the template.
 
 ## Mitigation Plan
 
-- Monitor dataset sizes and performance metrics as the project evolves.
-- Document code with scalability in mind to ease future migration.
-- Provide training for team members on alternative tools like Dask and PySpark to prepare for potential scaling needs.
+- Provide team training and documentation on using Cookiecutter templates effectively.
+- Customize the Cookiecutter template to precisely match the project's needs, minimizing unnecessary complexity.
+- Revisit the decision if project requirements change or if multiple projects arise in the future.
