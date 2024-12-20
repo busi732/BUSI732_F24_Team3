@@ -27,3 +27,15 @@ Positive:
 Negative:
 - Conda environments can be large, and there may be some initial overhead in setting up environments and solving dependencies.
 - There may be some additional time required for understanding Conda for team members unfamiliar with it.
+
+## Alternatives Considered
+
+Poetry
+- Strengths: Poetry simplifies dependency management by using automatic dependency resolution and integrates both environment and packaging management into a single tool.
+It works well for Python-only projects and provides clear version management using pyproject.toml.
+- Weaknesses: Poetry is less suited to managing non-Python dependencies or complex cross-platform environments (e.g., data science environments with heavy C/C++ dependencies).
+Transitioning from traditional pip-based workflows to Poetry may have a learning curve, particularly for teams unfamiliar with its ecosystem.
+
+pip + virtualenv
+- Strengths: pip and virtualenv are the most commonly used combination for managing Python dependencies and environments. Both tools are lightweight and widely supported in the Python ecosystem. pip installs Python packages directly from PyPI, and virtualenv creates isolated environments, allowing for package version control and conflict avoidance. This combination avoids the need for a more heavyweight tool like Conda, focusing solely on Python-related packages and environments.
+- Weaknesses: Unlike Conda or Poetry, pip and virtualenv require manual handling of dependencies and package versions. Resolving complex dependencies can be more cumbersome without automatic dependency resolution, especially in larger projects with intricate version conflicts. If the project involves non-Python dependencies (e.g., system libraries), pip and virtualenv don’t offer the same cross-platform environment management as Conda.
